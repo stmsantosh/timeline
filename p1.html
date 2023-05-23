@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            /* Prevent the container from blocking mouse clicks */
+        }
+
+        #svgPath {
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 0.5s ease-in-out;
+        }
+
+        .item {
+            background: red;
+            padding: 20px;
+            display: none;
+        }
+
+        .items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .item.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="items">
+        <div class="item">
+            <button class="next">NEXT</button>
+            Lorem ipsum dolor sit amet.
+        </div>
+        <div class="item">
+            <button class="next">NEXT</button>
+            Lorem ipsum dolor sit amet.
+        </div>
+        <div class="item">
+            <button class="next">NEXT</button>
+            Lorem ipsum dolor sit amet.
+        </div>
+        <div class="item">
+            <button class="next">NEXT</button>
+            Lorem ipsum dolor sit amet.
+        </div>
+        <div class="item">
+            <button class="next">NEXT</button>
+            Lorem ipsum dolor sit amet.
+        </div>
+    </div>
+
+    <div class="container">
+        <svg width="100%" height="100%">
+            <path id="svgPath" stroke="#1085c7" stroke-width="4px" stroke-dasharray="20, 10" fill="none" />
+        </svg>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const items = document.querySelectorAll(".item");
+            const nextButtons = document.querySelectorAll(".next");
+            const svgPath = document.getElementById("svgPath");
+
+            let currentIndex = 0;
+
+            // Show the first item
+            items[currentIndex].style.display = "block";
+            items[currentIndex].style.opacity = "1";
+
+            // Add click event listener to each "Next" button
+            nextButtons.forEach((button, index) => {
+                button.addEventListener("click", function () {
+                    if (currentIndex === index) {
+                        // Hide the current item
+                        // items[currentIndex].style.display = "none";
+                        // items[currentIndex].style.opacity = "0";
+
+                        // Increment the current index
+                        currentIndex++;
+
+                        // Show the next item
+                        items[currentIndex].classList.add("active");
+
+                        // Update the SVG path
+                        updateSVGPath();
+
+                        // Disable the "Next" button if it is the last item
+                        if (currentIndex === items.length - 1) {
+                            nextButtons.forEach((btn) => {
+                                btn.disabled = true;
+                            });
+                        }
+                    }
+                });
+            });
+
+            function updateSVGPath() {
+                // Calculate the position of the next item
+                const nextItemRect = items[currentIndex].getBoundingClientRect();
+                const nextItemCenterX = nextItemRect.left + nextItemRect.width / 2;
+                const nextItemCenterY = nextItemRect.top + nextItemRect.height / 2;
+
+                // Calculate the position of the previous item
+                const prevItemRect = items[currentIndex - 1].getBoundingClientRect();
+                const prevItemCenterX = prevItemRect.left + prevItemRect.width / 2;
+                const prevItemCenterY = prevItemRect.top + prevItemRect.height / 2;
+
+                // Update the SVG path coordinates
+                svgPath.setAttribute("d", `M${prevItemCenterX},${prevItemCenterY} L${nextItemCenterX},${nextItemCenterY}`);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

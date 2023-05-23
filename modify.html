@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="modify.css">
+    <title>Document</title>
+    <style>
+        .timeline__event {
+            display: none;
+            transition:all 0.3s ease-in-out;
+        }
+
+        .timeline__event:first-child {
+            display: flex;
+                  }
+
+        .timeline__event.you-are-active {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="timeline-section">
+        <div class="timeline-titile">
+            <h1>customised training programs</h1>
+        </div>
+        <div class="container">
+            <h2 class="timeline-process-titile">Our customisation process</h2>
+            <div class="timeline">
+                <!--first-->
+                <div class="timeline__event  timeline__event--type1">
+                    <div class="timeline__event__icon ">
+                        <img src="img/custom-training-1.jpeg" alt="">
+
+                    </div>
+                    <div class="timeline__event__content ">
+                        <div class="timeline__event__title">
+                            <div class="steps-circle">1</div>
+                            <div class="timeline-title">Initial consulation</div>
+                        </div>
+                        <div class="timeline__event__description">
+                            <p> Initial Training Needs Ananlysis(TNA)
+                            </p>
+                        </div>
+                        <button id="btn" class="next-btn btn" onclick="myfunc()">More</button>
+                    </div>
+                </div>
+
+                <!--second-->
+
+                <div class="timeline__event  timeline__event--type2">
+                    <div class="timeline__event__icon">
+                        <img src="img/custom-training-2.jpeg" alt="">
+
+                    </div>
+                    <div class="timeline__event__content">
+                        <div class="timeline__event__title">
+                            <div class="steps-circle">2</div>
+                            <div class="timeline-title">Proposed Training Solution</div>
+                        </div>
+                        <div class="timeline__event__description">
+                            <p>Training proposal presented outlining the following:
+                                <span> Details of initial Breif and consulation(derived from TNA)</span>
+                                <span>Training Recommendations</span>
+                                <span>Development & Timelines</span>
+                                <span>Tentative Training Dates</span>
+                                <span>Initial costs*</span>
+                            </p>
+                        </div>
+                        <button id="btn" class="next-btn btn" onclick="myfunc()">More</button>
+                    </div>
+                </div>
+
+                <!--third-->
+
+                <div class="timeline__event animated  delay-1s timeline__event--type3">
+
+                    <div class="timeline__event__content">
+                        <div class="timeline__event__title">
+                            <div class="steps-circle">3</div>
+                            <div class="timeline-title">Consultation</div>
+                        </div>
+                        <div class="timeline__event__description">
+                            <p>Meet with our learning and Developments specialist to futher explore training goals and
+                                objectives</p>
+                        </div>
+                        <button id="btn" class="next-btn btn" onclick="myfunc()">More</button>
+                    </div>
+                </div>
+
+                <!--forth-->
+
+                <div class="timeline__event  timeline__event--type4">
+                    <div class="timeline__event__icon">
+                        <img src="img/custom-training-4.jpg" alt="">
+                    </div>
+
+                    <div class="timeline__event__content">
+                        <div class="timeline__event__title">
+                            <div class="steps-circle">4</div>
+                            <div class="timeline-title">Development</div>
+                        </div>
+                        <div class="timeline__event__description">
+                            <p>Training Customisation commences with an estimated development time 7-14 working days
+                                (may
+                                vary depending on training complexity)*</p>
+                            <p>*Additional Fees may apply-please ensure to refer this program ouline Terms and
+                                conditions
+                                locatted at the rear. ></p>
+                        </div>
+                        <button id="btn" class="next-btn btn" onclick="myfunc()">More</button>
+                    </div>
+                </div>
+                <!-- fifth -->
+                <div class="timeline__event  timeline__event--type5">
+                    <div class="timeline__event__icon">
+                        <img src="img/custom-training-4.jpg" alt="">
+                    </div>
+
+                    <div class="timeline__event__content">
+                        <div class="timeline__event__title">
+                            <div class="steps-circle">4</div>
+                            <div class="timeline-title">Delivery</div>
+                        </div>
+                        <div class="timeline__event__description">
+                            <p>customised workplace Based Training Delivery</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var items = document.querySelectorAll('.timeline__event');
+            var currentItemIndex = 0;
+
+            function showNextItem() {
+                currentItemIndex = (currentItemIndex + 1) % items.length;
+                items[currentItemIndex].classList.add("you-are-active");
+                this.disabled = true;
+            }
+
+            var nextButtons = document.querySelectorAll('.next-btn');
+            for (var i = 0; i < nextButtons.length; i++) {
+                nextButtons[i].addEventListener('click', showNextItem);
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
