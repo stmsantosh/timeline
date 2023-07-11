@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="timeline-section">
+        <h3 class="hint"><i class="fa-solid fa-bullhorn"></i>click on given <mark><i
+                    class="fa-sharp fa-solid fa-circle-dot"></i>dots</mark>to see more information</h3>
+        <div class="timeline-wrapper">
+            <ul class="timeline">
+                <li data-date="Jan 7 2023">
+                    <span class="title">Mother's Birthday</span>
+                    <div class="data">
+                        <h3>Day you've been waiting for </h3>
+                        <span>Jan 7,2022</span>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nulla! Quae accusantium
+                            temporibus eveniet incidunt cum fugit sit, repudiandae quam.</p>
+                        <span class="close">Click to Close</span>
+                    </div>
+                </li>
+                <li data-date="Jan 8 2023">
+                    <span class="title">Mother's Birthday</span>
+                    <div class="data">
+                        <h3>Day you've been waiting for </h3>
+                        <span>Jan 7,2022</span>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nulla! Quae accusantium
+                            temporibus eveniet incidunt cum fugit sit, repudiandae quam.</p>
+                        <span class="close">Click to Close</span>
+                    </div>
+                </li>
+                <li data-date="Jan 9 2023">
+                    <span class="title">Mother's Birthday</span>
+                    <div class="data">
+                        <h3>Day you've been waiting for </h3>
+                        <span>Jan 7,2022</span>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nulla! Quae accusantium
+                            temporibus eveniet incidunt cum fugit sit, repudiandae quam.</p>
+                        <span class="close">Click to Close</span>
+                    </div>
+                </li>
+                <li data-date="Jan 10 2023">
+                    <span class="title">Mother's Birthday</span>
+                    <div class="data">
+                        <h3>Day you've been waiting for </h3>
+                        <span>Jan 7,2022</span>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nulla! Quae accusantium
+                            temporibus eveniet incidunt cum fugit sit, repudiandae quam.</p>
+                        <span class="close">Click to Close</span>
+                    </div>
+                </li>
+                <li data-date="Jan 11 2023">
+                    <span class="title">Mother's Birthday</span>
+                    <div class="data">
+                        <h3>Day you've been waiting for </h3>
+                        <span>Jan 7,2022</span>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nulla! Quae accusantium
+                            temporibus eveniet incidunt cum fugit sit, repudiandae quam.</p>
+                        <span class="close">Click to Close</span>
+                    </div>
+                </li>
+                <li data-date="Jan 12 2023">
+                    <span class="title">Mother's Birthday</span>
+                    <div class="data">
+                        <h3>Day you've been waiting for </h3>
+                        <span>Jan 7,2022</span>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nulla! Quae accusantium
+                            temporibus eveniet incidunt cum fugit sit, repudiandae quam.</p>
+                        <span class="close">Click to Close</span>
+                    </div>
+                </li>
+                <li data-date="Jan 13 2023">
+                    <span class="title">Mother's Birthday</span>
+                    <div class="data">
+                        <h3>Day you've been waiting for </h3>
+                        <span>Jan 7,2022</span>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nulla! Quae accusantium
+                            temporibus eveniet incidunt cum fugit sit, repudiandae quam.</p>
+                        <span class="close">Click to Close</span>
+                    </div>
+                </li>
+                <li data-date="Jan 14 2023">
+                    <span class="title">Mother's Birthday</span>
+                    <div class="data">
+                        <h3>Day you've been waiting for </h3>
+                        <span>Jan 7,2022</span>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nulla! Quae accusantium
+                            temporibus eveniet incidunt cum fugit sit, repudiandae quam.</p>
+                        <span class="close">Click to Close</span>
+                    </div>
+                </li>
+                              
+            </ul>
+        </div>
+    </section>
+    <script src="https://kit.fontawesome.com/c7a1b9b71e.js" crossorigin="anonymous"></script>
+    <script>
+        const timelineWrapper = document.querySelector('.timeline-wrapper');
+        const timelines = document.querySelectorAll('.timeline li .data');
+
+        for (const time of timelines) {
+            time.addEventListener('click', () => {
+                time.classList.toggle('show');
+            });
+        }
+
+        timelineWrapper.addEventListener('mousemove', (event) => {
+            const timeline = document.querySelector('.timeline');
+            const scrollWidth = (event.pageX / timelineWrapper.clientWidth) * (timelineWrapper.clientWidth - timeline.clientWidth);
+            timeline.style.left = `${scrollWidth.toFixed(1)}px`;
+        });
+    </script>
+
+</body>
+
+</html>
